@@ -1,4 +1,13 @@
-import { Button, HStack, Menu, MenuButton, MenuItem, MenuList, Text, Image } from "@chakra-ui/react";
+import {
+  Button,
+  HStack,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Text,
+  Image,
+} from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import useGenres, { Genre } from "../../hooks/useGenres";
 import getCroppedImageUrl from "../../services/image-url";
@@ -19,7 +28,7 @@ const GenderSelector = ({ selectedGenre, onSelectGenre }: Props) => {
         {selectedGenre?.name || "Genres"}
       </MenuButton>
       <MenuList>
-        {data.map((genre) => (
+        {data?.results.map((genre) => (
           <MenuItem onClick={() => onSelectGenre(genre)} key={genre.id}>
             <HStack>
               <Image
