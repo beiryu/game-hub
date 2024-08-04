@@ -1,14 +1,14 @@
-import { Box, Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, Show } from "@chakra-ui/react";
 import { useState } from "react";
 import GameGrid from "./components/GameGrid";
 import GameHeading from "./components/GameHeading";
 import GenreList from "./components/GenreList";
+import GenderSelector from "./components/GenreSelector";
 import NavBar from "./components/NavBar";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
-import { Platform } from "./hooks/useGames";
 import { Genre } from "./hooks/useGenres";
-import GenderSelector from "./components/GenreSelector";
+import { Platform } from "./hooks/usePlatforms";
 
 export interface GameQuery {
   genre: Genre | null;
@@ -31,11 +31,16 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })} />
+        <NavBar
+          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+        />
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })} />
+          <GenreList
+            selectedGenre={gameQuery.genre}
+            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+          />
         </GridItem>
       </Show>
       <GridItem area="main">
@@ -46,20 +51,26 @@ function App() {
               <Box marginRight={5}>
                 <GenderSelector
                   selectedGenre={gameQuery.genre}
-                  onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+                  onSelectGenre={(genre) =>
+                    setGameQuery({ ...gameQuery, genre })
+                  }
                 />
               </Box>
             </Show>
             <Box marginRight={5}>
               <PlatformSelector
                 selectedPlatform={gameQuery.platform}
-                onSelectPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
+                onSelectPlatform={(platform) =>
+                  setGameQuery({ ...gameQuery, platform })
+                }
               />
             </Box>
             <Box marginRight={5}>
               <SortSelector
                 sortOrder={gameQuery.sortOrder}
-                onSelectSortOrder={(sortOrder) => setGameQuery({ ...gameQuery, sortOrder })}
+                onSelectSortOrder={(sortOrder) =>
+                  setGameQuery({ ...gameQuery, sortOrder })
+                }
               />
             </Box>
           </Flex>
