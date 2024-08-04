@@ -14,11 +14,12 @@ import getCroppedImageUrl from "../../services/image-url";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenreId?: number;
 }
 
-const GenderSelector = ({ selectedGenre, onSelectGenre }: Props) => {
+const GenderSelector = ({ selectedGenreId, onSelectGenre }: Props) => {
   const { data, error } = useGenres();
+  const selectedGenre = data?.results.find((g) => g.id === selectedGenreId);
 
   if (error) return null;
 
