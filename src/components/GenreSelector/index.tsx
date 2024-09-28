@@ -9,8 +9,9 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
-import useGenres, { Genre } from "../../hooks/useGenres";
+import useGenres from "../../hooks/useGenres";
 import getCroppedImageUrl from "../../services/image-url";
+import { Genre } from "../../entities/Genre";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
