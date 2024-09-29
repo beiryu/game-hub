@@ -7,7 +7,7 @@ const ErrorPage = () => {
 
   return (
     <>
-      <NavBar onSearch={() => {}} />
+      <NavBar />
       <Box padding={5}>
         <Heading>Oops</Heading>
         <Text>
